@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/jinzhu/gorm"
@@ -17,7 +18,9 @@ func Connect() {
 		log.Fatal(err)
 	}
 
+	fmt.Println("connected to the database ...")
 	db = database
+
 }
 
 func GetDB() *gorm.DB {
