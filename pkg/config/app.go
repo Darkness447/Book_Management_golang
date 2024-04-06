@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 var (
@@ -12,7 +13,8 @@ var (
 )
 
 func Connect() {
-	database, err := gorm.Open("mysql", "name:password/database?charset=uft8&parseTime=True&loc=Local")
+	dsn := "root:mypassword@tcp(127.0.0.1:3306)/mysql?charset=utf8mb4&parseTime=True&loc=Local"
+	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		log.Fatal(err)

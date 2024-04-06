@@ -2,7 +2,7 @@ package models
 
 import (
 	"github.com/Darkness467/Book_Management_Store/pkg/config"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 var db *gorm.DB
@@ -22,8 +22,7 @@ func init() {
 }
 
 func (b *Book) CreateBook() *Book {
-	db.NewRecord(b)
-	db.Create(*b)
+	db.Create(&b)
 	return b
 }
 
